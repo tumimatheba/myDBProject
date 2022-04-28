@@ -7,7 +7,7 @@ namespace students.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class studentsController : ControllerBase
-    {
+     {
         private readonly studentContext context;
 
         public studentsController(studentContext context) 
@@ -15,12 +15,14 @@ namespace students.Controllers
             this.context = context;
         }
 
-        [HttpGet]
+        [HttpGet()]
 
         public async Task<ActionResult<List<student>>> Get() 
         {
+            
             return Ok(await this.context.students.ToListAsync());
         }
+      
 
         [HttpGet("{id}")]
         public async Task<ActionResult<student>> Get(int id)
@@ -30,6 +32,17 @@ namespace students.Controllers
                 return BadRequest("Student not found.");
             return Ok(singleStudent);
         }
+
+  
+        [HttpGet("/count")]
+        public async Task<ActionResult<student>> GetByName(string FirstName)
+        {
+
+            return Ok(await this.context.students.CountAsync());
+        }   
+            
+     
+
 
         [HttpPost]
         public async Task<ActionResult<List<student>>> AddAsingleStudent(student singleStudent)
