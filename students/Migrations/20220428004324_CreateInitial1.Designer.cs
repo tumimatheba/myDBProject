@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using students.data;
 
@@ -10,9 +11,10 @@ using students.data;
 namespace students.Migrations
 {
     [DbContext(typeof(studentContext))]
-    partial class studentContextModelSnapshot : ModelSnapshot
+    [Migration("20220428004324_CreateInitial1")]
+    partial class CreateInitial1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
